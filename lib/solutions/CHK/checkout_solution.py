@@ -29,7 +29,10 @@ def checkout(skus):
     for product, (c, item, reduction) in COMB.items():
         count = products[product]
         if item in products:
-            products[item] = max(products[item] - count // c, 0)
+            if item != product:
+                products[item] = max(products[item] - count // c, 0)
+            else:
+                products[item] = products[item] // (c + reduction) * c + products[item] % (c + reduction)
 
     for product, count in products.items():
         if product in PRICE:
