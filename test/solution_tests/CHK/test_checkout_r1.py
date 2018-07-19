@@ -9,8 +9,11 @@ class TestCheckout(unittest.TestCase):
         test_vector = [
             ('A', 50),
             ('F', -1),
-            ('AAAAA', 230),
-            ('AAAAAA', 260),
+            ('AAAA', 180),
+            ('AAAAA', 200),
+            ('AAAAAA', 250),
+            ('A' * 9, 380),
+            ('EEEEEBB', 200),
             ('AAABB', 175),
             ('AABCD', 165)
         ]
