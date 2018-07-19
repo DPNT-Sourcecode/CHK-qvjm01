@@ -87,6 +87,9 @@ def checkout(skus):
                 products[item] = products[item] // (c + reduction) * c + products[item] % (c + reduction)
 
     for product, count in products.items():
+        if count == 0:
+            continue
+        print(product, count, price)
         if product in PRICE:
             single = PRICE[product]
             if product in PROM:
