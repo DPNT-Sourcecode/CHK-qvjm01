@@ -66,7 +66,6 @@ def checkout(skus):
         total = sum(products[c] for c in order)
         if total >= thr:
             price += p * (total // thr)
-            print(price)
             for c in order:
                 red = min(thr, products[c])
                 products[c] -= red
