@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import unittest
-from ...solutions.CHK.checkout_solution import checkout
+from solutions.CHK.checkout_solution import checkout
 
 
 class TestCheckout(unittest.TestCase):
