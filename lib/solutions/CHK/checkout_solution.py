@@ -35,7 +35,7 @@ def checkout(skus):
             if product in PROM:
                 remain_count = count
                 for prom_th, prom_price in PROM[product]:
-                    price += prom_price * (count // prom_th)
+                    price += prom_price * (remain_count // prom_th)
                     remain_count = remain_count % prom_th
                 price += single * remain_count
             else:
