@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import unittest
-from solution.CHK.checkout_solution import checkout
+from ...solutions.CHK.checkout_solution import checkout
 
 
 class TestCheckout(unittest.TestCase):
@@ -14,3 +14,5 @@ class TestCheckout(unittest.TestCase):
             ('AAABB', 175),
             ('AABCD', 165)
         ]
+        for skus, expected in test_vector:
+            self.assertEqual(checkout(skus), expected)
