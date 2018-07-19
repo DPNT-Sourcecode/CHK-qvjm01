@@ -17,8 +17,9 @@ class TestCheckout(unittest.TestCase):
             ('AAABB', 175),
             ('AABCD', 165),
             ('F' * 6, 40),
+            ('STXYZ', 45 + 17 + 20),
             ('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 965 - 21 - 20 - 20 + 45),
-            
+
         ]
         for skus, expected in test_vector:
             self.assertEqual(checkout(skus), expected)

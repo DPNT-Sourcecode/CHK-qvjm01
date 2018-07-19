@@ -64,14 +64,19 @@ def checkout(skus):
 
     for order, thr, p in COMB:
         total = sum(products[c] for c in order)
-        if total > thr:
+        print(total)
+        if total >= thr:
             price += p * (total // thr)
+            print(price)
             for c in order:
                 red = min(thr, products[c])
+                print(red)
                 products[c] -= red
+                print(c, products[c])
                 thr -= red
                 if thr == 0:
                     break
+    print(products, price)
 
     for product, (c, item, reduction) in REDUCTION.items():
         count = products[product]
