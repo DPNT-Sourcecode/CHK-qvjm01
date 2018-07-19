@@ -44,7 +44,7 @@ PROM = {
 
 }
 
-COMB = {
+REDUCTION = {
     'E': (2, 'B', 1),
     'F': (2, 'F', 1),
     'N': (3, 'M', 1),
@@ -53,10 +53,27 @@ COMB = {
 }
 
 
+COMB = {
+    ('ZYSTX', 3, 45)  # sorted by price
+}
+
+
 def checkout(skus):
     products = Counter(skus)
     price = 0
-    for product, (c, item, reduction) in COMB.items():
+
+    for order, thr, p in COMB:
+        total = sum(products[c] for c in order)
+        if total > thr:
+            price += p * (total // thr)
+            for c in order:
+                red = min(thr, products[c])
+                products[c] -= red
+                thr -= red
+                if thr == 0:
+                    break
+
+    for product, (c, item, reduction) in REDUCTION.items():
         count = products[product]
         if item in products:
             if item != product:
