@@ -15,11 +15,12 @@ def checkout(skus):
     products = Counter(skus)
     price = 0
     for product, count in products.items():
+        print(product, count)
         if product in PRICE:
             single, prom, prom_price = PRICE[product]
             print(single, prom, prom_price)
             if prom:
-                price += single * (count % prom) + prom_price * (count // 3)
+                price += (single * (count % prom) + prom_price * (count // prom))
                 print(price)
             else:
                 price += single * count
