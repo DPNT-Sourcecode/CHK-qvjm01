@@ -14,7 +14,7 @@ PRICE = {
     'H': 10,
     'I': 35,
     'J': 60,
-    'K': 80,
+    'K': 70,
     'L': 90,
     'M': 15,
     'N': 40,
@@ -22,14 +22,14 @@ PRICE = {
     'P': 50,
     'Q': 30,
     'R': 50,
-    'S': 30,
+    'S': 20,
     'T': 20,
     'U': 40,
     'V': 50,
     'W': 20,
-    'X': 90,
-    'Y': 10,
-    'Z': 50,
+    'X': 17,
+    'Y': 20,
+    'Z': 21,
 
 }
 
@@ -37,7 +37,7 @@ PROM = {
     'A': [(5, 200), (3, 130)],
     'B': [(2, 45)],
     'H': [(10, 80), (5, 45)],
-    'K': [(2, 150)],
+    'K': [(2, 120)],
     'P': [(5, 200)],
     'Q': [(3, 80)],
     'V': [(3, 130), (2, 90)],
@@ -64,19 +64,15 @@ def checkout(skus):
 
     for order, thr, p in COMB:
         total = sum(products[c] for c in order)
-        print(total)
         if total >= thr:
             price += p * (total // thr)
             print(price)
             for c in order:
                 red = min(thr, products[c])
-                print(red)
                 products[c] -= red
-                print(c, products[c])
                 thr -= red
                 if thr == 0:
                     break
-    print(products, price)
 
     for product, (c, item, reduction) in REDUCTION.items():
         count = products[product]
@@ -89,7 +85,6 @@ def checkout(skus):
     for product, count in products.items():
         if count == 0:
             continue
-        print(product, count, price)
         if product in PRICE:
             single = PRICE[product]
             if product in PROM:
